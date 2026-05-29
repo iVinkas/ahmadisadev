@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmad Malik — Developer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='28' fill='%2322c55e'%3EAM.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --bg: #0a1a0f;
+    --bg-light: #0f2617;
+    --surface: #0d2213;
+    --card: rgba(15, 42, 23, 0.6);
+    --card-solid: #102a17;
+    --border: rgba(34, 197, 94, 0.15);
+    --border-hover: rgba(34, 197, 94, 0.4);
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-glow: rgba(34, 197, 94, 0.3);
+    --accent: #22c55e;
+    --accent-light: #86efac;
+    --accent2: #34d399;
+    --accent3: #a7f3d0;
+    --muted: #6b8f7a;
+    --text: #e8f5ec;
+    --text-dim: #94b8a3;
+    --text-soft: #c4ddd0;
+    --mono: 'Inter', sans-serif;
+    --sans: 'Poppins', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(10, 26, 15, 0.8);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--green-400);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--text-dim); font-weight: 400; }
+
+  nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+  }
+
+  nav a:hover { color: var(--green-400); }
+
+  .nav-badge {
+    font-size: 12px;
+    padding: 6px 16px;
+    border: 1px solid var(--green-500);
+    color: var(--green-400);
+    border-radius: 999px;
+    font-weight: 600;
+    background: rgba(34, 197, 94, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-badge i { width: 14px; height: 14px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 26, 15, 0.7) 0%,
+      rgba(10, 26, 15, 0.85) 50%,
+      rgba(10, 26, 15, 0.95) 100%
+    );
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+    top: -200px; right: -100px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.06) 0%, transparent 70%);
+    bottom: -100px; left: -100px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-400);
+    margin-bottom: 28px;
+    background: rgba(34, 197, 94, 0.08);
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(34, 197, 94, 0.15);
+  }
+
+  .hero-name {
+    font-family: var(--sans);
+    font-size: clamp(60px, 11vw, 120px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+  }
+
+  .hero-name .line1 { color: var(--text); display: block; }
+  .hero-name .line2 {
+    background: linear-gradient(135deg, var(--green-400), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 580px;
+    margin-bottom: 40px;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .hero-desc strong { color: var(--green-400); font-weight: 600; }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .meta-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-400);
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 24px rgba(34, 197, 94, 0.25);
+  }
+
+  .hero-cta:hover {
+    background: linear-gradient(135deg, var(--green-400), var(--green-500));
+    box-shadow: 0 6px 32px rgba(34, 197, 94, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .hero-cta i { width: 16px; height: 16px; }
+
+  /* SECTION SHARED */
+  section { padding: 100px 48px; position: relative; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .section-num {
+    font-size: 12px;
+    color: var(--green-500);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .section-title {
+    font-family: var(--sans);
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+    max-width: 200px;
+  }
+
+  /* VIDEO SECTIONS */
+  .video-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .section-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 26, 15, 0.88) 0%,
+      rgba(10, 26, 15, 0.92) 50%,
+      rgba(10, 26, 15, 0.88) 100%
+    );
+  }
+
+  .section-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SKILLS */
+  .skills-section { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--green-500), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+  }
+
+  .skill-card:hover::before { transform: scaleX(1); }
+
+  .skill-icon {
+    width: 36px; height: 36px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid var(--border);
+  }
+
+  .skill-icon svg, .skill-icon img {
+    width: 20px; height: 20px;
+  }
+
+  .skill-name {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .tag.hot {
+    border-color: var(--green-500);
+    color: var(--green-400);
+    background: rgba(34, 197, 94, 0.08);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 16px;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+  }
+
+  .project-card:hover .project-arrow { transform: translate(4px, -4px); }
+
+  .project-card.wide { grid-column: span 8; }
+  .project-card.narrow { grid-column: span 4; }
+  .project-card.half { grid-column: span 6; }
+  .project-card.full { grid-column: span 12; }
+
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 4px 14px;
+    border: 1px solid var(--green-500);
+    color: var(--green-400);
+    font-weight: 600;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.06);
+  }
+
+  .project-tag i { width: 12px; height: 12px; }
+
+  .project-tag.blue {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(52, 211, 153, 0.06);
+  }
+
+  .project-tag.green {
+    border-color: var(--green-400);
+    color: var(--green-400);
+    background: rgba(34, 197, 94, 0.1);
+  }
+
+  .project-title {
+    font-family: var(--sans);
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .project-arrow {
+    font-size: 20px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+  }
+
+  .project-arrow i { width: 20px; height: 20px; }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .project-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--green-400);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .stack-chip {
+    font-size: 11px;
+    padding: 4px 12px;
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 999px;
+  }
+
+  /* TERMINAL BLOCK */
+  .terminal {
+    background: rgba(8, 18, 10, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: rgba(16, 42, 23, 0.5);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #28c840; }
+
+  .terminal-content {
+    padding: 20px;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .t-prompt { color: var(--green-400); }
+  .t-path { color: var(--accent2); }
+  .t-cmd { color: var(--text); }
+  .t-out { color: var(--text-dim); }
+  .t-highlight { color: #fbbf24; }
+  .t-success { color: var(--green-400); }
+
+  /* EXPERIENCE */
+  .exp-section { background: var(--surface); }
+
+  .exp-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding: 32px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s;
+  }
+
+  .exp-item:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 24px rgba(34, 197, 94, 0.08);
+  }
+
+  .exp-period {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    padding-top: 4px;
+  }
+
+  .exp-role {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .exp-company { color: var(--accent2); font-size: 14px; margin-bottom: 10px; font-weight: 500; }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-points li {
+    color: var(--text-dim);
+    font-size: 13px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-500);
+  }
+
+  .exp-badge {
+    font-size: 11px;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 999px;
+    white-space: nowrap;
+    height: fit-content;
+    font-weight: 500;
+  }
+
+  /* ACHIEVEMENTS */
+  .achiev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .achiev-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .achiev-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.1);
+  }
+
+  .achiev-num {
+    font-family: var(--sans);
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(34, 197, 94, 0.08);
+    position: absolute;
+    top: 16px; right: 20px;
+  }
+
+  .achiev-icon {
+    width: 40px; height: 40px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid var(--border);
+  }
+
+  .achiev-icon i { width: 20px; height: 20px; color: var(--green-400); }
+
+  .achiev-title {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .achiev-desc { color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--bg);
+    text-align: center;
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-family: var(--sans);
+    font-size: clamp(40px, 8vw, 88px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .contact-title .glow {
+    background: linear-gradient(135deg, var(--green-400), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .contact-sub {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin-bottom: 48px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border-radius: 999px;
+  }
+
+  .contact-link i { width: 16px; height: 16px; }
+
+  .contact-link:hover {
+    border-color: var(--green-500);
+    color: var(--green-400);
+    background: rgba(34, 197, 94, 0.08);
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.1);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--green-400);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* CURSOR BLINK */
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--green-400);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* INTRO */
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    overflow: hidden;
+  }
+
+  #introParticles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .intro-loading, .intro-name-phase, .intro-welcome-phase {
+    position: relative;
+    z-index: 2;
+  }
+
+  .intro-overlay.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+  }
+
+  .intro-overlay.hidden { display: none; }
+
+  /* Loading phase */
+  .intro-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .smiley-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .smiley {
+    font-size: 40px;
+    opacity: 0;
+    transform: scale(0) rotate(-20deg);
+    animation: smileyPop 0.5s ease forwards;
+    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.3));
+  }
+
+  .smiley:nth-child(1) { animation-delay: 0.1s; }
+  .smiley:nth-child(2) { animation-delay: 0.3s; }
+  .smiley:nth-child(3) { animation-delay: 0.5s; }
+  .smiley:nth-child(4) { animation-delay: 0.7s; }
+  .smiley:nth-child(5) { animation-delay: 0.9s; }
+
+  @keyframes smileyPop {
+    0% { opacity: 0; transform: scale(0) rotate(-20deg); }
+    60% { transform: scale(1.2) rotate(5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  .intro-loading-text {
+    font-family: var(--sans);
+    font-size: 18px;
+    color: var(--text-dim);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .intro-loading-dots {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+
+  .intro-loading-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-400);
+    animation: dotBounce 1.4s ease infinite;
+  }
+
+  .intro-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .intro-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes dotBounce {
+    0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-6px); }
+  }
+
+  /* Name input phase */
+  .intro-name-phase {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    animation: fadeInUp 0.6s ease;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .intro-greeting {
+    font-family: var(--sans);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .intro-greeting .green { color: var(--green-400); }
+
+  .intro-name-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .intro-name-input {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .intro-name-input::placeholder {
+    color: var(--muted);
+  }
+
+  .intro-name-input:focus {
+    border-color: var(--green-500);
+    box-shadow: 0 0 24px rgba(34, 197, 94, 0.15);
+  }
+
+  .intro-name-btn {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 24px rgba(34, 197, 94, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .intro-name-btn:hover {
+    background: linear-gradient(135deg, var(--green-400), var(--green-500));
+    box-shadow: 0 6px 32px rgba(34, 197, 94, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .intro-skip {
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    font-family: var(--mono);
+  }
+
+  .intro-skip:hover { color: var(--text-dim); }
+
+  .intro-music-toggle {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .intro-music-toggle:hover {
+    border-color: var(--green-500);
+    color: var(--green-400);
+  }
+
+  .intro-music-toggle i { width: 16px; height: 16px; }
+
+  /* Floating music button (main site) */
+  .music-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--card-solid);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  .music-fab.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .music-fab:hover {
+    border-color: var(--green-500);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
+    transform: scale(1.1);
+  }
+
+  .music-fab i { width: 20px; height: 20px; color: var(--green-400); }
+
+  .music-fab .fab-bars {
+    position: absolute;
+    bottom: -2px;
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 10px;
+    pointer-events: none;
+  }
+
+  .music-fab .fab-bar {
+    width: 3px;
+    background: var(--green-400);
+    border-radius: 2px;
+    animation: fabPulse 0.8s ease-in-out infinite alternate;
+  }
+
+  .music-fab .fab-bar:nth-child(1) { height: 5px; animation-delay: 0s; }
+  .music-fab .fab-bar:nth-child(2) { height: 8px; animation-delay: 0.2s; }
+  .music-fab .fab-bar:nth-child(3) { height: 4px; animation-delay: 0.4s; }
+
+  .music-fab.paused .fab-bars { display: none; }
+
+  @keyframes fabPulse {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(0.4); }
+  }
+
+  /* Welcome phase */
+  .intro-welcome-phase {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    animation: fadeInUp 0.6s ease;
+  }
+
+  .intro-welcome-smileys {
+    display: flex;
+    gap: 12px;
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+
+  .intro-welcome-smileys span {
+    animation: floatSmiley 2s ease-in-out infinite;
+  }
+
+  .intro-welcome-smileys span:nth-child(2) { animation-delay: 0.3s; }
+  .intro-welcome-smileys span:nth-child(3) { animation-delay: 0.6s; }
+
+  @keyframes floatSmiley {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .intro-welcome-text {
+    font-family: var(--sans);
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: -1px;
+  }
+
+  .intro-welcome-text .green {
+    background: linear-gradient(135deg, var(--green-400), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .intro-welcome-sub {
+    font-size: 16px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .project-card.wide,
+    .project-card.narrow,
+    .project-card.half { grid-column: span 12; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-name { letter-spacing: -1px; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO OVERLAY -->
+<div class="intro-overlay" id="intro">
+  <canvas id="introParticles"></canvas>
+  <!-- Loading phase -->
+  <div class="intro-loading" id="introLoading">
+    <div class="smiley-row">
+      <span class="smiley">&#128522;</span>
+      <span class="smiley">&#128526;</span>
+      <span class="smiley">&#128513;</span>
+      <span class="smiley">&#128525;</span>
+      <span class="smiley">&#129395;</span>
+    </div>
+    <div class="intro-loading-text">
+      Loading awesome stuff
+      <span class="intro-loading-dots">
+        <span></span><span></span><span></span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Name input phase -->
+  <div class="intro-name-phase" id="introName">
+    <div class="intro-greeting">Hey there! <span class="green">Welcome</span></div>
+    <div class="intro-name-form">
+      <input type="text" class="intro-name-input" id="nameInput" placeholder="What's your name?" maxlength="30" autocomplete="off">
+      <button class="intro-name-btn" id="nameSubmit">
+        Let's go
+        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+      </button>
+      <button class="intro-skip" id="nameSkip">Skip</button>
+    </div>
+  </div>
+
+  <!-- Welcome phase -->
+  <div class="intro-welcome-phase" id="introWelcome">
+    <div class="intro-welcome-smileys">
+      <span>&#128075;</span>
+      <span>&#127793;</span>
+      <span>&#128171;</span>
+    </div>
+    <div class="intro-welcome-text">
+      Welcome, <span class="green" id="userName">friend</span>
+    </div>
+    <div class="intro-welcome-sub">Glad to have you here. Enjoy the vibes.</div>
+  </div>
+  <!-- Music toggle in intro -->
+  <button class="intro-music-toggle" id="introMusicToggle">
+    <i data-lucide="volume-2" id="introMusicIcon"></i>
+    <span id="introMusicLabel">Music: On</span>
+  </button>
+</div>
+
+<!-- Background music -->
+<audio id="bgMusic" src="BG.mp3" loop></audio>
+
+<!-- Floating music toggle (main site) -->
+<button class="music-fab paused" id="musicFab" title="Toggle music">
+  <i data-lucide="volume-x" id="fabIcon"></i>
+  <div class="fab-bars">
+    <div class="fab-bar"></div>
+    <div class="fab-bar"></div>
+    <div class="fab-bar"></div>
+  </div>
+</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AM<span>.dev</span></div>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div id="navClock" style="font-size:12px;color:var(--text-dim);font-weight:500;font-variant-numeric:tabular-nums;"></div>
+    <div class="nav-badge"><i data-lucide="circle-dot"></i> Open to Work</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="summer-cloud-cottage-moewalls-com.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div id="heroGreeting" style="font-size:15px;color:var(--green-400);font-weight:500;margin-bottom:12px;"></div>
+    <div class="hero-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> 16 y/o · Islamabad, Pakistan · Full-Stack & Systems Dev</div>
+    <h1 class="hero-name">
+      <span class="line1">AHMAD</span>
+      <span class="line2">MALIK</span>
+    </h1>
+    <p class="hero-desc">
+      Builder. Breaker. Creator.<br>
+      I write <strong>Java, C++, Python, Rust, TypeScript</strong> — from Minecraft servers to ghost clients,
+      from custom programming languages to security research. I ship things that work and
+      break things that shouldn't.<span class="cursor"></span>
+    </p>
+    <div class="hero-meta">
+      <span class="meta-item"><span class="meta-dot"></span>Available for freelance</span>
+      <span class="meta-item" style="color:var(--muted)">·</span>
+      <span class="meta-item"><i data-lucide="github" style="width:14px;height:14px;"></i> github.com/rootahmad</span>
+      <span class="meta-item" style="color:var(--muted)">·</span>
+      <span class="meta-item"><i data-lucide="dollar-sign" style="width:14px;height:14px;"></i> $200+ Software Sales</span>
+    </div>
+    <a href="#projects" class="hero-cta">View My Work <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</section>
+
+<!-- SKILLS (video bg) -->
+<section class="skills-section video-section" id="skills">
+  <div class="section-video">
+    <video autoplay muted loop playsinline>
+      <source src="zelda-forest-temple.1920x1080.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">// 01</span>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+        </div>
+        <div class="skill-name">Java / JavaFX</div>
+        <p style="color:var(--text-dim);font-size:13px;">Primary specialization. Rich desktop applications, Minecraft plugin ecosystems, and GUI frameworks.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Specialized</span>
+          <span class="tag">JavaFX</span>
+          <span class="tag">Spigot API</span>
+          <span class="tag">Maven</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+        </div>
+        <div class="skill-name">C++ / Systems</div>
+        <p style="color:var(--text-dim);font-size:13px;">Extensive experience with bulky, performance-critical C++. Ghost clients, reverse engineering, low-level tooling.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Advanced</span>
+          <span class="tag">Win32 API</span>
+          <span class="tag">Memory Mgmt</span>
+          <span class="tag">RE</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust">
+        </div>
+        <div class="skill-name">Rust / Systems</div>
+        <p style="color:var(--text-dim);font-size:13px;">Ground-up Minecraft server reimplementation using Bevy ECS, LMDB, and a 60+ crate workspace. Fearless concurrency, zero GC pauses, ~100 MB footprint.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Specialized</span>
+          <span class="tag">Bevy ECS</span>
+          <span class="tag">LMDB</span>
+          <span class="tag">Async</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        </div>
+        <div class="skill-name">Python</div>
+        <p style="color:var(--text-dim);font-size:13px;">Extensive scripting, automation, and tooling experience. Used across security research and backend utilities.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Advanced</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Scripting</span>
+          <span class="tag">Security Tools</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
+        </div>
+        <div class="skill-name">TypeScript / JavaScript</div>
+        <p style="color:var(--text-dim);font-size:13px;">Full-stack web work with Node.js as primary specialization. REST APIs, web apps, deployment pipelines.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Specialized</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">Next.js</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" alt="Godot">
+        </div>
+        <div class="skill-name">GDScript / Godot</div>
+        <p style="color:var(--text-dim);font-size:13px;">Game development experience. Contributed to "The Right of the Quiet Road" before cancellation.</p>
+        <div class="skill-tags">
+          <span class="tag">Godot Engine</span>
+          <span class="tag">GDScript</span>
+          <span class="tag">Game Design</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <i data-lucide="shield-check" style="width:20px;height:20px;color:var(--green-400);"></i>
+        </div>
+        <div class="skill-name">Cybersecurity</div>
+        <p style="color:var(--text-dim);font-size:13px;">Penetration testing, vulnerability discovery. Found and reported security flaws in FBISE and Gujarat Board systems.</p>
+        <div class="skill-tags">
+          <span class="tag hot">Pen Testing</span>
+          <span class="tag">OSINT</span>
+          <span class="tag">Vuln Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">// 02</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- REGIFY - FEATURED -->
+    <a href="https://www.youtube.com/@RegifyMinecraft" target="_blank" class="project-card wide reveal">
+      <span class="project-tag green"><i data-lucide="star"></i> Featured · Commercial</span>
+      <div class="project-title">
+        Regify
+        <span class="project-arrow"><i data-lucide="arrow-up-right"></i></span>
+      </div>
+      <p class="project-desc">
+        A fully-featured Minecraft software product with a YouTube presence and paying customer base.
+        Developed end-to-end — from core logic to distribution — and priced at a premium reflecting its quality.
+        Demonstrates product thinking beyond just code.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">$200+</span>
+          <span class="stat-label">Revenue Generated</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">Live</span>
+          <span class="stat-label">Status</span>
+        </div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-chip">Java</span>
+        <span class="stack-chip">Spigot API</span>
+        <span class="stack-chip">Minecraft</span>
+        <span class="stack-chip">Plugin Dev</span>
+      </div>
+    </a>
+
+    <!-- COBALT - FEATURED -->
+    <a href="https://github.com/rootahmad" target="_blank" class="project-card wide reveal">
+      <span class="project-tag green"><i data-lucide="star"></i> Featured · Rust · Systems</span>
+      <div class="project-title">
+        Cobalt
+        <span class="project-arrow"><i data-lucide="arrow-up-right"></i></span>
+      </div>
+      <p class="project-desc">
+        A ground-up Minecraft Java Edition server written in Rust — not a wrapper or proxy, a full native reimplementation.
+        Fork of FerruMC, expanded with mobs, block dropping, faster world gen, and multi-version support.
+        Uses Bevy ECS for parallel game logic and LMDB for memory-mapped chunk storage.
+        60+ crate workspace enforcing clean modular architecture.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">60+</span>
+          <span class="stat-label">Rust Crates</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">20 TPS</span>
+          <span class="stat-label">Consistent Tick Rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">~100 MB</span>
+          <span class="stat-label">Memory Baseline</span>
+        </div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-chip">Rust</span>
+        <span class="stack-chip">Bevy ECS</span>
+        <span class="stack-chip">LMDB</span>
+        <span class="stack-chip">Minecraft Protocol</span>
+        <span class="stack-chip">World Gen</span>
+      </div>
+      <div class="cobalt-screenshots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;">
+        <img src="1.png" alt="Cobalt screenshot 1" style="width:100%;border-radius:10px;border:1px solid var(--border);aspect-ratio:16/9;object-fit:cover;">
+        <img src="2.png" alt="Cobalt screenshot 2" style="width:100%;border-radius:10px;border:1px solid var(--border);aspect-ratio:16/9;object-fit:cover;">
+        <img src="3.png" alt="Cobalt screenshot 3" style="width:100%;border-radius:10px;border:1px solid var(--border);aspect-ratio:16/9;object-fit:cover;">
+      </div>
+    </a>
+
+    <!-- NEGLISH -->
+    <div class="project-card narrow reveal">
+      <span class="project-tag"><i data-lucide="code-2"></i> PL Design</span>
+      <div class="project-title">
+        Neglish Lang
+        <span class="project-arrow"><i data-lucide="arrow-up-right"></i></span>
+      </div>
+      <p class="project-desc">
+        Founded and designed the Neglish programming language. Won 2nd place at Pakistan's national CS exhibition. Also built Neglish Learn — a Scratch-inspired IDE for the language.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <span class="stat-value">#2</span>
+          <span class="stat-label">PK CS Exhibition</span>
+        </div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-chip">Language Design</span>
+        <span class="stack-chip">Interpreter</span>
+        <span class="stack-chip">Scratch-inspired IDE</span>
+      </div>
+    </div>
+
+    <!-- IMCBI SCHOOL SITE -->
+    <a href="https://imcbi83.edu.pk" target="_blank" class="project-card half reveal">
+      <span class="project-tag blue"><i data-lucide="globe"></i> Web · Live</span>
+      <div class="project-title">
+        IMCBI School Website
+        <span class="project-arrow"><i data-lucide="arrow-up-right"></i></span>
+      </div>
+      <p class="project-desc">
+        Official website for a Pakistani educational institution. Designed and developed with a professional public-facing interface, delivering a reliable presence for the school community.
+      </p>
+      <div class="project-stack">
+        <span class="stack-chip">HTML/CSS/JS</span>
+        <span class="stack-chip">Node.js</span>
+        <span class="stack-chip">Client Deployment</span>
+      </div>
+    </a>
+
+    <!-- FILM FATHOM -->
+    <a href="https://film-fathom.vercel.app/" target="_blank" class="project-card half reveal">
+      <span class="project-tag blue"><i data-lucide="globe"></i> Web · Live</span>
+      <div class="project-title">
+        Film Fathom
+        <span class="project-arrow"><i data-lucide="arrow-up-right"></i></span>
+      </div>
+      <p class="project-desc">
+        A Netflix-style streaming frontend integrating the 123movies API. Custom UI/UX replicating production streaming platform quality — browse, search, and stream.
+      </p>
+      <div class="project-stack">
+        <span class="stack-chip">TypeScript</span>
+        <span class="stack-chip">Next.js</span>
+        <span class="stack-chip">123movies API</span>
+        <span class="stack-chip">Vercel</span>
+      </div>
+    </a>
+
+    <!-- TERMINAL CARD -->
+    <div class="project-card full reveal" style="cursor:default;">
+      <span class="project-tag" style="border-color:var(--muted);color:var(--muted);background:transparent;"><i data-lucide="folder-open"></i> Other Work</span>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+          <span style="font-size:12px;color:var(--muted);margin-left:8px;">ahmad@dev ~ </span>
+        </div>
+        <div class="terminal-content">
+          <div><span class="t-prompt">ahmad@dev</span> <span class="t-path">~/projects</span> <span class="t-cmd">$ ls -la --type=all</span></div>
+          <div class="t-out" style="margin-top:8px;">
+            <div><span class="t-highlight">!</span> cobalt-rust/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">Ground-up MC server in Rust — Bevy ECS + LMDB, 60+ crates</span></div>
+            <div><span class="t-success">+</span> ghost-client-cpp/ &nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">C++ Minecraft ghost client — written from scratch</span></div>
+            <div><span class="t-success">+</span> slinky-re/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">Reverse engineered slinky.gg — stripped obfuscation</span></div>
+            <div><span class="t-success">+</span> mc-server-remakes/ &nbsp;&nbsp; <span style="color:var(--muted)">1:1 server clones for clients — Hypixel-tier quality</span></div>
+            <div><span class="t-success">+</span> the-quiet-road/ &nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">Contributed to Godot game (cancelled pre-release)</span></div>
+            <div><span class="t-highlight">!</span> fbise-vuln/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">Discovered & reported critical vulnerabilities — FBISE + Gujarat Board</span></div>
+            <div><span class="t-success">+</span> neglish-learn/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--muted)">Scratch-inspired visual IDE for Neglish language</span></div>
+          </div>
+          <div style="margin-top:12px;"><span class="t-prompt">ahmad@dev</span> <span class="t-path">~/projects</span> <span class="t-cmd">$ _</span><span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-section" id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">// 03</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2025 — Present</div>
+      <div>
+        <div class="exp-role">Systems Developer — Cobalt</div>
+        <div class="exp-company">Independent / Rust</div>
+        <ul class="exp-points">
+          <li>Reimplemented Minecraft Java Edition server from scratch in Rust — networking, game logic, world gen, storage</li>
+          <li>Architected 60+ crate workspace with Bevy ECS for parallel game systems and LMDB for chunk persistence</li>
+          <li>Forked from FerruMC; expanded with mobs, block dropping, multi-version support, and faster generation</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Rust · Bevy · ECS</span>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2023 — Present</div>
+      <div>
+        <div class="exp-role">Minecraft Plugin Developer & Server Admin</div>
+        <div class="exp-company">Freelance / Multiple Servers</div>
+        <ul class="exp-points">
+          <li>Developed 1:1 replicas of major Minecraft servers for private clients</li>
+          <li>Created unique, custom plugins with strong client satisfaction and positive reviews</li>
+          <li>Handled full server administration — from configuration to live deployment</li>
+          <li>Worked across multiple client contracts simultaneously; strong delivery record</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Java · Spigot</span>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2023 — Present</div>
+      <div>
+        <div class="exp-role">Software Developer — Regify</div>
+        <div class="exp-company">Independent / YouTube Platform</div>
+        <ul class="exp-points">
+          <li>Built and launched a commercial Minecraft software product independently</li>
+          <li>Managed distribution, updates, and community via YouTube channel</li>
+          <li>Generated $200+ in direct software sales</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Product Dev</span>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2023</div>
+      <div>
+        <div class="exp-role">Web Developer</div>
+        <div class="exp-company">IMCBI School · Islamabad</div>
+        <ul class="exp-points">
+          <li>Designed and developed the official school website at imcbi83.edu.pk</li>
+          <li>Delivered a professional, responsive public-facing site for an educational institution</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Web · Client</span>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2023</div>
+      <div>
+        <div class="exp-role">Cybersecurity Tester</div>
+        <div class="exp-company">FBISE & Gujarat Board · Freelance</div>
+        <ul class="exp-points">
+          <li>Conducted penetration testing on Federal Board of Intermediate and Secondary Education (FBISE)</li>
+          <li>Discovered and reported critical vulnerabilities in the Indian Gujarat Board's systems</li>
+          <li>Responsible disclosure; demonstrated advanced web security knowledge</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Security</span>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-period">2022</div>
+      <div>
+        <div class="exp-role">Game Developer (Contributor)</div>
+        <div class="exp-company">The Right of the Quiet Road</div>
+        <ul class="exp-points">
+          <li>Contributed GDScript code and game logic to an indie Godot-based game</li>
+          <li>Project was cancelled prior to release; experience in collaborative game development workflows</li>
+        </ul>
+      </div>
+      <span class="exp-badge">Godot · GDScript</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS (video bg) -->
+<section class="video-section" id="achievements">
+  <div class="section-video">
+    <video autoplay muted loop playsinline>
+      <source src="fox-in-rorest.1920x1080.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">// 04</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="achiev-grid">
+      <div class="achiev-card reveal">
+        <span class="achiev-num">02</span>
+        <div class="achiev-icon"><i data-lucide="trophy"></i></div>
+        <div class="achiev-title">2nd Place — Pakistan CS Exhibition</div>
+        <p class="achiev-desc">Competed nationally with the Neglish programming language, placing 2nd at Pakistan's CS exhibition. A self-designed language with its own IDE — Neglish Learn.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">$</span>
+        <div class="achiev-icon"><i data-lucide="wallet"></i></div>
+        <div class="achiev-title">$200+ Software Revenue at 16</div>
+        <p class="achiev-desc">Built, launched, and monetized Regify — a Minecraft software product — entirely independently. Real product, real customers, real money.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">RE</span>
+        <div class="achiev-icon"><i data-lucide="scan-search"></i></div>
+        <div class="achiev-title">Reverse Engineering</div>
+        <p class="achiev-desc">Successfully reverse-engineered slinky.gg and other obfuscated software. Deep knowledge of bytecode, decompilation, and memory inspection.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">RS</span>
+        <div class="achiev-icon"><i data-lucide="server"></i></div>
+        <div class="achiev-title">Cobalt — MC Server in Rust</div>
+        <p class="achiev-desc">Built a ground-up Minecraft Java server in Rust with Bevy ECS parallelism, LMDB storage, and a 60+ crate workspace. Consistent 20 TPS, ~100 MB footprint, sub-1s startup.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">01</span>
+        <div class="achiev-icon"><i data-lucide="shield-alert"></i></div>
+        <div class="achiev-title">Security Vulnerabilities Found</div>
+        <p class="achiev-desc">Discovered and responsibly disclosed vulnerabilities in FBISE (Federal Board) and Indian Gujarat Board systems. Real-world security impact.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">05</span>
+        <div class="achiev-icon"><i data-lucide="globe"></i></div>
+        <div class="achiev-title">Multiple Live Client Websites</div>
+        <p class="achiev-desc">Delivered production websites for real clients — including an official school site and a full streaming platform clone. Currently live and in use.</p>
+      </div>
+
+      <div class="achiev-card reveal">
+        <span class="achiev-num">PL</span>
+        <div class="achiev-icon"><i data-lucide="brain"></i></div>
+        <div class="achiev-title">Founded a Programming Language</div>
+        <p class="achiev-desc">Designed and implemented Neglish — a full programming language with its own syntax, interpreter, and visual learning environment for beginners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-title">
+    Let's Build<br><span class="glow">Something.</span>
+  </div>
+  <p class="contact-sub">
+    16 y/o developer from Islamabad. Available for freelance, contracts, and interesting problems.
+  </p>
+  <div class="contact-links">
+    <a href="https://github.com/rootahmad" target="_blank" class="contact-link">
+      <i data-lucide="github"></i> GitHub → rootahmad
+    </a>
+    <a href="https://www.youtube.com/@RegifyMinecraft" target="_blank" class="contact-link">
+      <i data-lucide="youtube"></i> YouTube → Regify
+    </a>
+    <a href="https://film-fathom.vercel.app/" target="_blank" class="contact-link">
+      <i data-lucide="film"></i> Film Fathom Project
+    </a>
+    <a href="https://imcbi83.edu.pk" target="_blank" class="contact-link">
+      <i data-lucide="school"></i> School Website
+    </a>
+    <a href="mailto:ahmadmalikkindle@gmail.com" class="contact-link">
+      <i data-lucide="mail"></i> Email Me
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Ahmad Malik · Islamabad, Pakistan</span>
+  <span id="footerQuote" style="color:var(--text-dim);font-style:italic;max-width:400px;text-align:center;"></span>
+  <span>Built with care · 2026</span>
+  <span><a href="https://github.com/rootahmad" target="_blank">rootahmad</a></span>
+</footer>
+
+<script>
+  // Intro particles
+  (function() {
+    const canvas = document.getElementById('introParticles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const count = 50;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 3 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.3 + 0.1
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34, 197, 94, ${p.opacity})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      if (document.getElementById('intro') && !document.getElementById('intro').classList.contains('hidden')) {
+        requestAnimationFrame(drawParticles);
+      }
+    }
+    drawParticles();
+  })();
+
+  // Intro sequence
+  const intro = document.getElementById('intro');
+  const introLoading = document.getElementById('introLoading');
+  const introName = document.getElementById('introName');
+  const introWelcome = document.getElementById('introWelcome');
+  const nameInput = document.getElementById('nameInput');
+  const nameSubmit = document.getElementById('nameSubmit');
+  const nameSkip = document.getElementById('nameSkip');
+  const userName = document.getElementById('userName');
+
+  // Music controls
+  const bgMusic = document.getElementById('bgMusic');
+  const introMusicToggle = document.getElementById('introMusicToggle');
+  const introMusicIcon = document.getElementById('introMusicIcon');
+  const introMusicLabel = document.getElementById('introMusicLabel');
+  const musicFab = document.getElementById('musicFab');
+  const fabIcon = document.getElementById('fabIcon');
+  let musicOn = true;
+
+  function updateMusicUI() {
+    if (musicOn) {
+      introMusicIcon.setAttribute('data-lucide', 'volume-2');
+      introMusicLabel.textContent = 'Music: On';
+      musicFab.classList.remove('paused');
+      fabIcon.setAttribute('data-lucide', 'volume-2');
+    } else {
+      introMusicIcon.setAttribute('data-lucide', 'volume-x');
+      introMusicLabel.textContent = 'Music: Off';
+      musicFab.classList.add('paused');
+      fabIcon.setAttribute('data-lucide', 'volume-x');
+    }
+    lucide.createIcons();
+  }
+
+  introMusicToggle.addEventListener('click', () => {
+    musicOn = !musicOn;
+    if (musicOn) {
+      bgMusic.play().catch(() => {});
+    } else {
+      bgMusic.pause();
+    }
+    updateMusicUI();
+  });
+
+  musicFab.addEventListener('click', () => {
+    musicOn = !musicOn;
+    if (musicOn) {
+      bgMusic.play().catch(() => {});
+    } else {
+      bgMusic.pause();
+    }
+    updateMusicUI();
+  });
+
+  // Check if user already visited this session
+  const savedName = sessionStorage.getItem('visitorName');
+  if (savedName) {
+    intro.classList.add('hidden');
+    document.body.style.overflow = '';
+    musicFab.classList.add('visible');
+    musicOn = false;
+    updateMusicUI();
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Phase 1: Loading -> Name input
+  setTimeout(() => {
+    introLoading.style.display = 'none';
+    introName.style.display = 'flex';
+    lucide.createIcons();
+    nameInput.focus();
+  }, 3000);
+
+  function showWelcome(name) {
+    const displayName = name.trim() || 'friend';
+    userName.textContent = displayName;
+    sessionStorage.setItem('visitorName', displayName);
+
+    introName.style.display = 'none';
+    introWelcome.style.display = 'flex';
+
+    // Start music if on
+    if (musicOn) {
+      bgMusic.volume = 1;
+      bgMusic.play().catch(() => {});
+    }
+
+    // After showing welcome, fade out
+    setTimeout(() => {
+      intro.classList.add('fade-out');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        intro.classList.add('hidden');
+        musicFab.classList.add('visible');
+      }, 800);
+    }, 2500);
+  }
+
+  nameSubmit.addEventListener('click', () => showWelcome(nameInput.value));
+
+  nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') showWelcome(nameInput.value);
+  });
+
+  nameSkip.addEventListener('click', () => showWelcome(''));
+
+  // Live clock (AM/PM)
+  function updateClock() {
+    const now = new Date();
+    let h = now.getHours();
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    document.getElementById('navClock').textContent = `${h}:${m}:${s} ${ampm}`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // Time-based hero greeting
+  (function() {
+    const hour = new Date().getHours();
+    const name = sessionStorage.getItem('visitorName');
+    let greeting = 'Good evening';
+    let emoji = '\u{1F319}'; // moon
+    if (hour < 12) { greeting = 'Good morning'; emoji = '\u{2600}\u{FE0F}'; }
+    else if (hour < 17) { greeting = 'Good afternoon'; emoji = '\u{2600}\u{FE0F}'; }
+    const el = document.getElementById('heroGreeting');
+    if (name && name !== 'friend') {
+      el.textContent = `${emoji} ${greeting}, ${name}!`;
+    } else {
+      el.textContent = `${emoji} ${greeting}! Thanks for stopping by.`;
+    }
+  })();
+
+  // Friendly footer quote
+  (function() {
+    const quotes = [
+      'Thanks for visiting! Hope your day is going great.',
+      'You\'re awesome for checking this out.',
+      'Stay curious, keep building.',
+      'Every expert was once a beginner.',
+      'The best time to start is now.',
+      'Code is poetry written in logic.',
+      'Small steps lead to big things.'
+    ];
+    document.getElementById('footerQuote').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+  })();
+
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * (Array.from(reveals).indexOf(entry.target) % 4));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--green-400)' : '';
+    });
+  });
+
+  // Typing effect for terminal
+  const termLines = document.querySelectorAll('.terminal-content .t-out > div');
+  termLines.forEach((line, i) => {
+    line.style.opacity = '0';
+    line.style.transform = 'translateX(-8px)';
+    line.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    setTimeout(() => {
+      line.style.opacity = '1';
+      line.style.transform = 'none';
+    }, 800 + i * 200);
+  });
+
+  // Mouse glow on hero
+  const heroGlow = document.querySelector('.hero-glow');
+  document.querySelector('.hero').addEventListener('mousemove', (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - 350;
+    const y = e.clientY - rect.top - 350;
+    heroGlow.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+  });
+</script>
+</body>
+</html>
